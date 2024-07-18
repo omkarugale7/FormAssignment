@@ -14,7 +14,8 @@ public class Form implements Serializable {
     private List<Fields> fields = new ArrayList<>();
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private long formID;
+    @Column(name = "ID")
+    private long id;
 
     public Form() {
 
@@ -24,10 +25,9 @@ public class Form implements Serializable {
         return formTitle;
     }
 
-    public Form(String formTitle, List<Fields> fields, long formID) {
+    public Form(String formTitle, List<Fields> fields ) {
         this.formTitle = formTitle;
         this.fields = fields;
-        this.formID = formID;
     }
 
     public void setFormTitle(String formTitle) {
@@ -36,6 +36,14 @@ public class Form implements Serializable {
 
     public List<Fields> getFields() {
         return fields;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setFields(List<Fields> fields) {

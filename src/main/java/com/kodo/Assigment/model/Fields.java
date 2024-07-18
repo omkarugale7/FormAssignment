@@ -6,9 +6,11 @@ import java.io.Serializable;
 
 @Entity(name = "fields_table")
 public class Fields implements Serializable {
+    @Column(name = "label_name")
     private String label;
     private Boolean isRequired;
     private String fieldType;
+    @Column(name = "field_value")
     private String value;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "form_id")
@@ -19,9 +21,10 @@ public class Fields implements Serializable {
 
     public Fields(){}
 
-    public Fields(String label, Boolean isRequired, String fieldType, String value, com.kodo.Assigment.model.Form form, Long id) {
+    public Fields(String label, Boolean isRequired, String fieldType, String value, Form form, Long id) {
         this.label = label;
         this.isRequired = isRequired;
+        System.out.println(isRequired);
         this.fieldType = fieldType;
         this.value = value;
         this.form = form;
@@ -36,14 +39,6 @@ public class Fields implements Serializable {
         this.label = label;
     }
 
-    public String getFieldType() {
-        return fieldType;
-    }
-
-    public void setFieldType(String fieldType) {
-        this.fieldType = fieldType;
-    }
-
     public Boolean getRequired() {
         return isRequired;
     }
@@ -52,11 +47,37 @@ public class Fields implements Serializable {
         isRequired = required;
     }
 
+    public String getFieldType() {
+        return fieldType;
+    }
+
+    public void setFieldType(String fieldType) {
+        this.fieldType = fieldType;
+    }
+
     public String getValue() {
         return value;
     }
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public Form getForm() {
+        return form;
+    }
+
+    public void setForm(Form form) {
+        this.form = form;
+        System.out.println("hello vishal is here");
+        System.out.println(form.getId());
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -13,7 +13,7 @@ public class FormController {
     private FormRepository formRepository;
     @PostMapping("/form")
     public String createForm(@RequestBody Form form) {
-//        formRepository.save(form);
+        formRepository.save(form);
              return form.getFormTitle();
     }
 }
