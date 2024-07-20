@@ -16,6 +16,8 @@ public class Form implements Serializable {
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID")
     private long id;
+    @OneToMany(mappedBy = "form")
+    private List<Submissions> submissions;
 
     public Form() {
 
@@ -28,6 +30,14 @@ public class Form implements Serializable {
     public Form(String formTitle, List<Fields> fields ) {
         this.formTitle = formTitle;
         this.fields = fields;
+    }
+
+    public List<Submissions> getSubmissions() {
+        return submissions;
+    }
+
+    public void setSubmissions(List<Submissions> submissions) {
+        this.submissions = submissions;
     }
 
     public void setFormTitle(String formTitle) {

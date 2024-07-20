@@ -20,7 +20,7 @@ public class Fields implements Serializable {
 
     public Fields(){}
 
-    public Fields(String label, Boolean isRequired, String fieldType, String value, Form form, Long id) {
+    public Fields(String label, Boolean isRequired, String fieldType, String value, Long id) {
         this.label = label;
         this.isRequired = isRequired;
         System.out.println(isRequired);
@@ -37,11 +37,11 @@ public class Fields implements Serializable {
         this.label = label;
     }
 
-    public Boolean getRequired() {
+    public Boolean getIsRequired() {
         return isRequired;
     }
 
-    public void setRequired(Boolean required) {
+    public void setIsRequired(Boolean required) {
         isRequired = required;
     }
 
