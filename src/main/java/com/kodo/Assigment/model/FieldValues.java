@@ -11,13 +11,25 @@ public class FieldValues {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private Submissions submission;
-    private int field_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Fields field;
+
+    private long field_id_temp;
     private String field_value;
 
-    public FieldValues(int id, int field_id, String field_value) {
+    public FieldValues(int id, Submissions submission, long field_id_temp, String field_value) {
         this.id = id;
-        this.field_id = field_id;
+        this.submission = submission;
+        this.field_id_temp = field_id_temp;
         this.field_value = field_value;
+    }
+
+    public long getField_id_temp() {
+        return field_id_temp;
+    }
+
+    public void setField_id_temp(long field_Id) {
+        this.field_id_temp = field_Id;
     }
 
     public FieldValues() {
@@ -39,12 +51,12 @@ public class FieldValues {
         this.id = id;
     }
 
-    public int getField_id() {
-        return field_id;
+    public Fields getField() {
+        return field;
     }
 
-    public void setField_id(int field_id) {
-        this.field_id = field_id;
+    public void setField(Fields field) {
+        this.field = field;
     }
 
     public String getField_value() {
