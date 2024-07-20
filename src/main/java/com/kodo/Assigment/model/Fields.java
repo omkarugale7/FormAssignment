@@ -12,8 +12,7 @@ public class Fields implements Serializable {
     private String fieldType;
     @Column(name = "field_value")
     private String value;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "form_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Form form;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +26,6 @@ public class Fields implements Serializable {
         System.out.println(isRequired);
         this.fieldType = fieldType;
         this.value = value;
-        this.form = form;
         this.id = id;
     }
 
@@ -69,7 +67,7 @@ public class Fields implements Serializable {
 
     public void setForm(Form form) {
         this.form = form;
-        System.out.println("hello vishal is here");
+        System.out.println("hello I am is here");
         System.out.println(form.getId());
     }
 

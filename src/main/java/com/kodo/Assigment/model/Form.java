@@ -10,8 +10,8 @@ import java.util.List;
 @Entity(name = "form_table")
 public class Form implements Serializable {
     private String formTitle;
-    @OneToMany(mappedBy = "form", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Fields> fields = new ArrayList<>();
+    @OneToMany(mappedBy = "form")
+    private List<Fields> fields ;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID")
