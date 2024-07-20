@@ -1,5 +1,6 @@
 package com.kodo.Assigment.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -13,6 +14,7 @@ public class Fields implements Serializable {
     @Column(name = "field_value")
     private String value;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private Form form;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

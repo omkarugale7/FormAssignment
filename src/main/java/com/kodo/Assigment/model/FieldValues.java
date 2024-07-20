@@ -1,5 +1,6 @@
 package com.kodo.Assigment.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,6 +9,7 @@ public class FieldValues {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private Submissions submission;
     private int field_id;
     private String field_value;

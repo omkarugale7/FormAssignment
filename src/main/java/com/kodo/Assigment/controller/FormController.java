@@ -5,9 +5,9 @@ import com.kodo.Assigment.model.Form;
 import com.kodo.Assigment.repository.FieldsRepository;
 import com.kodo.Assigment.repository.FormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class FormController {
@@ -25,4 +25,13 @@ public class FormController {
         }
         return form.getFormTitle();
     }
+    @GetMapping("/form")
+    public List<Form> getForms() {
+        return formRepository.findAll();
+    }
+    @GetMapping("/form/{formId}")
+    public Form getFormById(@PathVariable long formId) {
+        return formRepository.findById(formId).get();
+    }
+
 }

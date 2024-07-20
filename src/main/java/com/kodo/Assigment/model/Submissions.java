@@ -1,5 +1,6 @@
 package com.kodo.Assigment.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public class Submissions {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     private Form form;
     @OneToMany(mappedBy = "submission")
     private List<FieldValues> fieldValues;
