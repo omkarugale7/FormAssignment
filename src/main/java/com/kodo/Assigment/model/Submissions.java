@@ -3,6 +3,7 @@ package com.kodo.Assigment.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,7 +15,7 @@ public class Submissions {
     @JsonIgnore
     private Form form;
     @OneToMany(mappedBy = "submission")
-    private List<FieldValues> fieldValues;
+    private List<FieldValues> fieldValues = new ArrayList<>();
     public Submissions(int id) {
         this.id = id;
     }

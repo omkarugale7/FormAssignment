@@ -1,5 +1,6 @@
 package com.kodo.Assigment.controller;
 import com.kodo.Assigment.model.FieldValues;
+import com.kodo.Assigment.model.Form;
 import com.kodo.Assigment.model.Submissions;
 import com.kodo.Assigment.repository.FieldValuesRepository;
 import com.kodo.Assigment.repository.FieldsRepository;
@@ -33,8 +34,11 @@ public class FormSubmissionController {
     }
     @GetMapping("/form/{formId}/submissions")
     public List<Submissions> getAllSubmissions(@PathVariable long formId) {
-        return formRepository.getById(formId).getSubmissions();
+//        Form form = formRepository.getById(formId);
+        Form form = formRepository.findById(formId).get();
+        return ((Form) form).getSubmissions();
     }
+
 
     @GetMapping("/submissions/{submissionId}")
     public Submissions getSubmissionById(@PathVariable int submissionId) {
