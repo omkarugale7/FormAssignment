@@ -25,24 +25,24 @@ public class FieldValuesTest {
 
     @Test
     public void testGettersAndSetters() {
-        // Test getters
-        assertEquals(1, fieldValues.getId(), "ID should be 1");
-        assertEquals(submission, fieldValues.getSubmission(), "Submission should match");
-        assertEquals(1L, fieldValues.getField_id_temp(), "Field ID Temp should be 1L");
-        assertEquals("sampleValue", fieldValues.getField_value(), "Field value should be 'sampleValue'");
-        assertEquals(field, fieldValues.getField(), "Field should match");
+        Submissions submission = new Submissions();
+        Fields field = new Fields();
+        field.setId(1L);
+        field.setLabel("Test Field");
 
-        // Test setters
-        fieldValues.setId(2);
-        fieldValues.setField_id_temp(2L);
-        fieldValues.setField_value("newValue");
-        fieldValues.setField(new Fields("New Field", false, "number", "newValue", 2L));
+        FieldValues fieldValues = new FieldValues();
+        fieldValues.setId(1);
+        fieldValues.setSubmission(submission);
+        fieldValues.setField(field);
+        fieldValues.setField_id_temp(1L);
+        fieldValues.setField_value("Test Value");
 
-        assertEquals(2, fieldValues.getId(), "Updated ID should be 2");
-        assertEquals(2L, fieldValues.getField_id_temp(), "Updated Field ID Temp should be 2L");
-        assertEquals("newValue", fieldValues.getField_value(), "Updated field value should be 'newValue'");
-        assertNotNull(fieldValues.getField(), "Field should not be null");
-        assertEquals("New Field", fieldValues.getField().getLabel(), "Updated field label should be 'New Field'");
+        // Assert fieldValues properties
+        assertEquals(1, fieldValues.getId());
+        assertEquals(submission, fieldValues.getSubmission());
+        assertEquals(field, fieldValues.getField());
+        assertEquals(1L, fieldValues.getField_id_temp());
+        assertEquals("Test Value", fieldValues.getField_value());
     }
 
     @Test
